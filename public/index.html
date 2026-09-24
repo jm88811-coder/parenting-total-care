@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>육아 토탈케어 - 출산 준비물·지원금·할 일 자동 정리</title>
+  <meta name="description" content="출산예정일만 입력하면 지금 사야 할 것, 사지 말아야 할 것, 받을 수 있는 지원금, 미리 준비할 일과 꿀팁을 한 번에 정리해 드려요." />
+  <meta property="og:title" content="육아 토탈케어" />
+  <meta property="og:description" content="출산 준비물 구매/렌탈/중고 비교, 지원금, 예약·신청 할 일까지 자동으로 정리" />
+  <meta property="og:type" content="website" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="hero">
+    <h1>👶 육아 토탈케어</h1>
+    <p class="tagline">검색하지 않아도 되는 육아 준비 도우미</p>
+  </header>
+
+  <main>
+    <section id="profile-view" class="card" hidden>
+      <h2>프로필 입력</h2>
+      <form id="profile-form">
+        <div class="row">
+          <label>
+            기준일 종류
+            <select id="babyDateType">
+              <option value="dueDate">출산예정일</option>
+              <option value="birthDate">이미 태어났어요(생년월일)</option>
+            </select>
+          </label>
+          <label>
+            날짜
+            <input type="date" id="babyDate" required />
+          </label>
+        </div>
+
+        <div class="row">
+          <label>
+            수유 계획
+            <select id="feedingPlan">
+              <option value="breastfeeding">모유수유</option>
+              <option value="formula">분유</option>
+              <option value="undecided">아직 미정</option>
+            </select>
+          </label>
+          <label>
+            거주지역
+            <input type="text" id="region" placeholder="예: 서울특별시" required />
+          </label>
+        </div>
+
+        <div class="row">
+          <label>
+            예상 사용기간(개월, 선택)
+            <input type="number" id="expectedUsageMonths" min="1" placeholder="비워두면 아이템별 평균 사용기간 적용" />
+          </label>
+        </div>
+
+        <label class="checkbox-row"><input type="checkbox" id="isFirstChild" /> 첫째 아이입니다</label>
+        <label class="checkbox-row"><input type="checkbox" id="hasCar" /> 자동차가 있습니다</label>
+        <label class="checkbox-row"><input type="checkbox" id="hasWashingMachine" /> 집에 세탁기가 있습니다</label>
+        <label class="checkbox-row"><input type="checkbox" id="plansToUseCrib" /> 아기침대를 사용할 계획입니다</label>
+        <label class="checkbox-row"><input type="checkbox" id="isEmployed" /> 본인 또는 배우자가 고용보험 가입 근로자입니다</label>
+        <label class="checkbox-row"><input type="checkbox" id="lowIncomeHousehold" /> 기준중위소득 이하 등 저소득 지원 기준에 해당합니다</label>
+        <p class="notice" style="margin-top:-0.5rem;">마지막 두 항목은 배우자 출산휴가급여·저소득 지원사업처럼 소득·근로 조건이 있는 지원금의 대상 여부를 빠르게 알려드리기 위한 것입니다. 정확한 기준은 지원금 화면의 공식 링크에서 확인하세요.</p>
+
+        <button type="submit" class="btn-primary">저장하고 시작하기</button>
+      </form>
+    </section>
+
+    <section id="app-view" hidden>
+      <nav class="tabs">
+        <button class="tab-btn active" data-tab="home">홈</button>
+        <button class="tab-btn" data-tab="todos">할 일</button>
+        <button class="tab-btn" data-tab="checklist">아이템</button>
+        <button class="tab-btn" data-tab="benefits">지원금</button>
+        <button class="tab-btn" data-tab="timeline">타임라인</button>
+        <button class="tab-btn tab-btn-edit" data-tab="edit">프로필 수정</button>
+      </nav>
+
+      <div id="tab-content" class="card"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <a href="guide/index.html">육아 가이드 모음</a> · <a href="privacy.html">개인정보처리방침</a>
+    <p>정보는 큐레이션한 참고용이며 제도는 자주 바뀌어요. 신청 전에 공식 사이트에서 최신 내용을 꼭 확인하세요.</p>
+  </footer>
+
+  <script src="site-config.js"></script>
+  <script src="site.js"></script>
+  <script src="logic.bundle.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
